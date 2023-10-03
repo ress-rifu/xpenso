@@ -90,7 +90,7 @@ void add_budget(double amount)
 {
     if (current_user == nullptr)
     {
-        cout << "Please sign in first.";
+        cout << "Please sign in first." << endl;
         return;
     }
 
@@ -98,14 +98,14 @@ void add_budget(double amount)
 
     save_user_data(*current_user);
 
-    cout << "Budget added successfully.";
+    cout << "Budget added successfully." << endl;
 }
 
 void add_transaction(double amount)
 {
     if (current_user == nullptr)
     {
-        cout << "Please sign in first.";
+        cout << "Please sign in first." << endl;
         return;
     }
 
@@ -113,7 +113,7 @@ void add_transaction(double amount)
 
     save_user_data(*current_user);
 
-    cout << "Transaction added successfully.";
+    cout << "Transaction added successfully." << endl;
 }
 
 int main()
@@ -151,6 +151,9 @@ int main()
             {
                 cout << "Invalid username or password." << endl;
             }
+            break;
+        }
+
         case 2:
         {
             string username, password;
@@ -202,24 +205,47 @@ int main()
         {
             cout << "Invalid option." << endl;
         }
-        }
-        }
-        while (option != 5)
-            ;
+            void view_balance()
+            {
+                if (current_user == nullptr)
+                {
+                    cout << "Please sign in first." << endl;
+                    return;
+                }
 
-        return 0;
-    }
-    void add_budget(double amount)
-    {
-        if (current_user == nullptr)
-        {
-            cout << "Please sign in first.";
-            return;
-        }
+                cout << "Your balance is: $" << current_user->balance << endl;
+            }
 
-        current_user->balance += amount;
+            int main()
+            {
+                int option;
 
-        save_user_data(*current_user);
+                do
+                {
+                    cout << "1. Sign in" << endl;
+                    cout << "2. Sign up" << endl;
+                    cout << "3. Add budget" << endl;
+                    cout << "4. Add transaction" << endl;
+                    cout << "5. View balance" << endl;
+                    cout << "6. Exit" << endl;
 
-        cout << "Budget added successfully.";
-    }
+                    cout << "Enter your option: ";
+                    cin >> option;
+
+                    switch (option)
+                    {
+                    ...
+
+                        case 5:
+                    {
+                        view_balance();
+
+                        break;
+                    }
+
+                        ...
+                    }
+                } while (option != 6);
+
+                return 0;
+            }
